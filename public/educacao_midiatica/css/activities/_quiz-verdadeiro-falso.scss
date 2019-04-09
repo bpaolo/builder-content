@@ -1,0 +1,104 @@
+.quiz-vf {
+  position: relative;
+  margin:30px 0;
+  
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.atvVerdFalso li.alternativas { 
+  display: inherit;
+  padding: 15px 0;
+  border-bottom:1px dotted rgba(0,0,0,.2);
+
+  .alternativa{
+    background: transparent;
+    color:$vf-bg;
+    border:1px solid $vf-bg;
+    @include transition(all 0.2s ease-out);
+    font-weight: bold;
+
+    &:hover{
+      background: darken($vf-bg, 10%);
+      color:$vf-color;
+    }
+
+    &.selected{
+      background: $vf-bg-active;
+      color:$vf-color-active;
+    }
+  }
+}
+
+.atvVerdFalso li .texto { 
+  width: calc(100% - 105px);
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px 20px 10px 0;
+  font-weight: 300;
+  font-size: 1.6rem;
+  text-transform: none;
+  color:$text-color;
+  font-family: "Open Sans", sans-serif;
+}
+
+.textoFeedCerto, .textoFeedErrado {
+  width: calc(100% - 105px);
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-style: italic;
+  opacity: .7;
+
+  &:empty{
+    display: none !important;
+  }
+}
+
+.atividade-texto li .radios {
+  width: initial !important;
+  margin: 0 5px;
+}
+
+.atvVerdFalso li .radios { 
+  display: inline-block;
+  width: 80px;
+  cursor: pointer;
+
+  span {
+    background: $vf-bg;
+    padding: 10px 12px;
+    color: $vf-color;
+
+    &:hover {
+      background: darken($vf-bg, 10%);
+    }
+
+    &.ativo {
+      background: $vf-bg-active !important;
+      box-shadow: none !important;
+      color:$vf-color-active;
+    }
+
+    &.certo {
+      background: $feed-certo-color;
+      color: #fff !important;
+      border-color: $feed-certo-color;
+    }
+
+    &.errado {
+      background: $feed-errado-color;
+      color: #fff !important;
+      border-color: $feed-errado-color;
+    }
+
+    &:focus {
+      background: $vf-bg-active;
+      color:$vf-color-active;
+    }
+  }
+}

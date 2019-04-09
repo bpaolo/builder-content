@@ -1,0 +1,10 @@
+@import '../bootstrap/variables';
+@import '../custom-variables';
+
+@import "quiz-variables";
+
+@import 'atividade-escolha';
+
+@import 'quiz-multipla-escolha';
+@import 'quiz-numero';
+@import 'quiz-verdadeiro-falso';

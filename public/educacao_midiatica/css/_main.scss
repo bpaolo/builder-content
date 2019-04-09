@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:400,700');
+
+@import "custom-variables";
+
+
+// Reset geral do curso
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: $text-color;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.6rem;
+  margin: 0;
+  padding: 0;
+  background: $body-bg;
+  font-weight: 300;
+}
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+//Estilo Geral para elementos básicos
+
+p {
+  color: $text-color;
+  line-height: 2.7rem;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.main-content{
+  h1{
+    font-size: 4.3rem;
+  }
+
+  h2{
+    font-size: 3.6rem;
+  }
+
+  h3{
+    font-size: 3rem;
+  }
+
+  h4{
+    font-size: 2.5rem;
+  }
+
+  h5{
+    font-size: 1.8rem;
+  }
+
+  h6{
+    font-size: 1.6rem;
+  }
+}
+
+h4,h5,h6{
+  text-transform: uppercase;
+  color:$main;
+}
+
+a {
+  color:$link-color;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    color: darken($link-color, 20%);
+  }
+}
+
+img, video, iframe{
+  max-width: 100%;
+}
+
+figure, img{
+  display: inline-block;
+
+  &.pull-left{
+    margin-right:30px;
+  }
+
+  &.pull-right{
+    margin-left:30px;
+  }
+}
+
+.divisao {
+  width: 100%;
+  margin: 25px 0;
+  display: inline-block;
+  border-bottom: 1px dashed $default-border-color;
+}
+
+.margin-auto{
+  margin:auto;
+}
+
+.display-flex{
+  @include display-flex();
+}
+
+.align-center{
+  @include align-items(center);
+}
+
+#conteudo h1, #conteudo h2, #conteudo h3, #conteudo h4, #conteudo h5, #conteudo h6{
+  line-height: $line-height-base;
+}
+
+// estilo elementos
+//@include estilo-elementos();

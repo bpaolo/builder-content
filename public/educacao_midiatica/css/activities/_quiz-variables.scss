@@ -1,0 +1,42 @@
+// multipla escolha
+$alternativa-bg:#eee;
+$alternativa-hover-bg:rgba($main,.3);
+$alternativa-hover-color:$text-color;
+$alternativa-color:$text-color;
+$alternativa-active-bg:$main;
+$alternativa-active-color:#fff;
+
+
+$feed-certo-color:$brand-success;
+$feed-certo-bg:lighten($feed-certo-color, 30%);
+$feed-errado-color:$brand-danger;
+$feed-errado-bg:lighten($feed-errado-color, 30%);
+
+
+// associativa colunas
+$associativa-bg:#eee;
+$associativa-nro-bg:$main;
+$associativa-nro-color:#fff;
+$associativa-active:darken($associativa-nro-bg,12%);
+
+// verdadeiro ou falso
+$vf-bg:$main;
+$vf-color:#fff;
+$vf-bg-active:$cor2;
+$vf-color-active:#fff;
+
+
+
+@mixin efeito-transicao {
+  -webkit-transition: 0.3s ease-out;
+  -moz-transition: 0.3s ease-out;
+  -o-transition: 0.3s ease-out;
+}
+
+@mixin efeito-escala {
+  -moz-transform: scale(1.03);
+  -webkit-transform: scale(1.03);
+  -o-transform: scale(1.03);
+  -ms-transform: scale(1.03);
+  transform: scale(1.03);
+}

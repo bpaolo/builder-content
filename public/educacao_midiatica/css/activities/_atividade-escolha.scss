@@ -1,0 +1,193 @@
+#conteudo h4.h4-enunciado{
+  text-transform: none;
+  color:$text-color;
+  font-weight: 300;
+  font-size: 1.6rem;
+  font-family: 'Open Sans', sans-serif;;
+  line-height: 1.5;
+}
+
+.atividade-escolha-geral {
+  position: relative;
+  margin-bottom: 20px;
+
+  .atividade-escolha-box {
+    padding: 10px 0;
+    margin: 10px 0;
+    border-bottom: 1px dotted rgba(0,0,0,.2);
+
+    h5.alternativa{
+      font-weight: 300;
+      font-size: 1.6rem;
+      text-transform: none;
+      font-family: 'Open Sans', sans-serif;;
+    }
+
+    .alternativa {
+      padding: 5px 15px;
+      margin: 0 0 5px 0;
+      background: $alternativa-bg;
+      color:$alternativa-color;
+      @include box-shadow(5px 0 0 $main inset);
+      cursor: pointer;
+      @include efeito-transicao;
+      
+      &.errado {
+        background: $feed-errado-bg !important;
+        color: $feed-errado-color !important;
+      }
+      
+      &.certo {
+        background: $feed-certo-bg !important;
+        color: $feed-certo-color !important;
+      }
+      
+      &:hover {
+        background: $alternativa-hover-bg;
+        color: $alternativa-hover-color;
+      }
+
+      &.ativo {
+        @include box-shadow(1200px 0 0 $alternativa-active-bg inset);
+        color: $alternativa-active-color;
+        @include efeito-transicao;
+      }
+    }
+  }
+
+  &.unica-escolha-diagnostica{
+    .atividade-escolha-box{
+      .alternativa{
+        @include box-shadow(none !important);
+        position: relative;
+        padding-left: 40px;
+
+        &:after{
+          content:'\e836';
+          display: inline-block;
+          font-family: 'Material Icons';
+          font-size: 24px;
+          position: absolute;
+          left: 8px;
+          top: 0;
+          bottom: 0;
+          @include transition(all 0.2s ease-out);
+        }
+
+        &.ativo{
+          color:$text-color !important;
+
+          &:after{
+            content:'\e837';
+          }
+        }
+
+        &[role="checkbox"]{
+          &:after{
+            content:'\e835';
+          }
+
+          &.ativo{
+            &:after{
+              content:'\e834';
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.likert{
+    .likert__alternativas{
+      @include display-flex();
+      @include flex-wrap();
+
+      .alternativa{
+        display: inline-block;
+        @include box-shadow(none !important);
+        background: none !important;
+        @include flex();
+        text-align: center;
+        margin: 5px 0 24px;
+        position:relative;
+        padding-bottom: 12px;
+        border-bottom:2px solid darken($main-discipline,10%);
+
+        &:focus{
+          outline:none;
+          background: rgba(0,0,0,.05) !important;
+        }
+
+        &:after{
+          content:'';
+          display: inline-block;
+          width:15px;
+          height: 15px;
+          border:2px solid darken($main-discipline,10%);
+          position: absolute;
+          bottom:-8px;
+          left:50%;
+          @include transform(translateX(-50%));
+          @include border-radius(50%);
+          background: #fff;
+          @include transition(all 0.2s ease-out);
+          @include transform-origin(center); 
+        }
+
+        &:hover{
+          &:after{
+            width:25px;
+            height: 25px;
+            bottom:-13px;
+            background: lighten($main-discipline,30%);
+          }
+        }
+
+        &.ativo{
+          color:$main-discipline !important;
+          font-weight: bold;
+
+          &:after{
+            width:25px;
+            height: 25px;
+            background: $main-discipline;
+            bottom:-13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.feedCerto {
+  background: $feed-certo-bg !important;
+  @include box-shadow(5px 0 0 $feed-certo-bg inset);
+}
+
+.feedErrado {
+  background: $feed-errado-bg !important;
+  @include box-shadow(5px 0 0 $feed-errado-bg inset);
+}
+
+.alternativa{
+  &.feedCerto{
+    position: relative;
+
+    &:before{
+      content:'\e86c';
+      font-family: 'Material Icons';
+      position: absolute;
+      right:-5px;
+      top:-5px;
+      background: $feed-certo-color;
+      color: #fff;
+      padding: 1px 6px;
+      text-align: center;
+      @include border-radius(50%);
+      width: 36px;
+      height: 36px;
+      font-size: 24px; 
+      opacity: 0.85;
+    }
+  }
+}
