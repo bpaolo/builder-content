@@ -31,13 +31,19 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 	Route::post($addresAdmin.'/module/add',  'ModuleController@add')->name('module.add');
 	Route::get($addresAdmin.'/module/listModule/{id}',  'ModuleController@listModule')->name('module.listModule');
 
-	//content
+	//element
 	Route::post($addresAdmin.'/element/add',  'ElementController@add')->name('element.add');
 	Route::get($addresAdmin.'/element/listContent',  'ElementController@list')->name('element.list');
 
 	//content
 	Route::post($addresAdmin.'/content/add',  'ContentController@add')->name('content.add');
 	Route::get($addresAdmin.'/content/listContent',  'ContentController@listContent')->name('content.listContent');
+	
+	Route::get($addresAdmin.'/content/edit/{id}/{templateId}',  'ContentController@edit')->name('content.edit');
+
+	Route::get($addresAdmin.'/content/formEdit/{id}/{templateId}', 'ContentController@formEdit')->name('content.formEdit');
+
+	Route::post($addresAdmin.'/content/save',  'ContentController@save')->name('content.save');
 });
 
 Route::group(['middleware' => ['auth'], 'namespace' => 'home'], function(){

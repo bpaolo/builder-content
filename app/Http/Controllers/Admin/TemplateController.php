@@ -33,8 +33,15 @@ class TemplateController extends Controller
         $component = null;
 
         foreach ($getAllElements as $value) {
-                
+                //adiciona o conteudo ao elemento
+            if(!empty($value->content)){
+                $ElementAndContent = str_replace('$content', $value->element, $value->content);
+                $component .= $ElementAndContent;
+            }else{
                 $component .= $value->element;
+            }
+
+                
                 
         }
         
@@ -44,6 +51,7 @@ class TemplateController extends Controller
                 $key++;
                 //$component['elementos'][$key] = $value->element;  
                 $string  = $result->template;
+
                 $result->template = str_replace('$allElement',$component, $string);
         }
 

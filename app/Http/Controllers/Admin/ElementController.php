@@ -19,10 +19,24 @@ class ElementController extends Controller
         $model   = new Element();
         $element = $this->getElementById($request['elementId']);
         
-    	$id =  $model->add($request['templateId'], 1, $element[0]->name, $element[0]->description, $element[0]->element);
+    	$id =  $model->add($request['templateId'], $request['elementId'], $element[0]->name, $element[0]->description, $element[0]->element);
 
-        $newElement = $this->getElementById($id);
-        return redirect('/home/admin/template/edit/'.$request['templateId']);
+        $templateId = $request['templateId'];
+
+        return redirect('/home/admin/content/formEdit/'.$id.'/'.$templateId);
+        
+        /*$newElement = $this->getElementById($id);
+        return redirect('/home/admin/template/edit/'.$request['templateId']);*/
+    }
+
+
+
+    public function update($id, $content)
+    {
+
+        $model  = new Element();
+        $result = $model->update($id, $content);
+        return $result;
     }
 
 

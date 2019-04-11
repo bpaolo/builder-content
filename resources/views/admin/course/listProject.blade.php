@@ -39,13 +39,20 @@
                           <label for="courseName">Nome Curso</label>
                           <input name="courseName" type="text" class="form-control" id="courseName" placeholder="Digite o nome do curso">
                         </div>
+                        
                         <div class="form-group">
-                          <label>Selecione uma Maquineta</label>
-                          <select class="form-control" name="maquinetaId">
-                                <option value="{{ $result->maquinetaId }}">{{ $result->maquinetaName }}</option>
+                          <label for="name">Selecione um Templates</label>
+                         
+                             <select class="form-control" name="maquinetaId">
+                               @foreach ($result->maquineta as $maquineta)
+                                <option value="{{ $maquineta->id }}">
+                                  {{ $maquineta->name }}
+                                </option>
+                               @endforeach  
                             
-                          </select>
+                          
                         </div>
+ 
                         <input name="projectId" type="hidden" value="{{ $result->projectId }}">
                         
                       <div class="box-footer">

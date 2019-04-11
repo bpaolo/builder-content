@@ -51,5 +51,18 @@ class Content extends Model
 		}
 
 	}
+
+	public function getContentBytemplateIdElementiId($templateId, $elementId)
+	{
+		try {
+			
+			$results = DB::select('select * from content where template_id = '.$templateId.' AND element_id = '.$elementId);
+			return $results;	
+
+		} catch (Exception $e) {
+			
+		}
+
+	}
     
 }

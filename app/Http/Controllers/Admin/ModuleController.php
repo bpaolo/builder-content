@@ -43,12 +43,14 @@ class ModuleController extends Controller
             
 
             //cadastrar todos os elementos com o id do novo template
-            $resultElement   = $element->getElementByTemplateId($request->templateId); 
+            /*$resultElement   = $element->getElementByTemplateId($request->templateId);
+
+            dd($resultElement); 
             if (isset($resultElement)) {
             
                 foreach ($resultElement as $f => $value) {
                         
-                    $idElement[$f]['id'] = $element->add($idTemplate, 1, $value->name, $value->element);
+                    $idElement[$f]['id'] = $element->add($idTemplate, $value->id, $value->name, $value->element);
                     $idElement[$f]['element_id'] = $value->id;
                     
                 }
@@ -63,7 +65,7 @@ class ModuleController extends Controller
                     $idcontent[$i]['id'] = $content->add($idTemplate, $valueElement['id'], 'digite o conteúdo do elemento'.$valueElement['id']);
                     
                 }
-            }    
+            }    */
 
             $result = $this->getNewTemplateByTemplateId($idTemplate);
 

@@ -25,7 +25,7 @@ class Maquineta extends Model
 	{
 		try {
 			
-			$results = DB::select('select * from maquineta where id = ?', [1]);
+			$results = DB::select('select * from maquineta');
 			return $results;	
 		
 		} catch (Exception $e) {

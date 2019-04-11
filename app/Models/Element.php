@@ -25,6 +25,16 @@ class Element extends Model
 		return $id;
 	}
 
+
+	public function updateElement($id, $content)
+	{
+		$id = DB::table('elements')
+				->where('id',$id)
+				->update(['content'=>$content]);
+		return $id;
+	}
+
+
 	public function getElementByMaquinetaId($maquinetaId)
 	{
 		try {

@@ -43,14 +43,15 @@ class CourseController extends Controller
             $project = new Project();
             $maquineta = new Maquineta();
             $project = $project->getProject()[0];
-            $maquin  = $maquineta->list()[0];
-                        
-            $result = (object)[
+                                    
+            $data = [
                 'projectId' => $project->id,
-                'projectName' => $project->name,
-                'maquinetaId' => $maquin->id,
-                'maquinetaName' => $maquin->name
-                ];    
+                'projectName' => $project->name
+                ]; 
+
+            $data['maquineta']       = (object)$maquineta->list();
+            
+            $result = (object)$data;
 
             return view('admin.course.listProject', compact('result'));
               
