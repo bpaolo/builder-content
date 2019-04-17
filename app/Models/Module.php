@@ -30,5 +30,19 @@ class Module extends Model
 		$id = DB::getPdo()->lastInsertId();
 		return $id;
 	}
+
+	public function getModuleByCorseId($Id)
+	{
+		try {
+			
+			$results = DB::select("SELECT * FROM gte_builder.modules where course_id = ".$Id);
+
+			return $results;	
+		
+		} catch (Exception $e) {
+			
+		}
+		
+	}
     
 }

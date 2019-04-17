@@ -54,6 +54,21 @@ AND maquineta_id = ".$maquinetaId." Order by id desc");
 	}
 
 
+	public function getCourseByProjectId($Id)
+	{
+		try {
+			
+			$results = DB::select("SELECT * FROM gte_builder.courses where project_id = ".$Id);
+
+			return $results;	
+		
+		} catch (Exception $e) {
+			
+		}
+		
+	}
+
+
 
 	
     

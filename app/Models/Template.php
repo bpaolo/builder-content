@@ -46,6 +46,19 @@ class Template extends Model
 
 	}
 
+	public function getTemplateByModuleId($Id)
+	{
+		try {
+			
+			$results = DB::select('select * from templates where modulo_id = '.$Id);
+			return $results;	
+
+		} catch (Exception $e) {
+			
+		}
+
+	}
+
 
 	
     

@@ -14,6 +14,8 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 	Route::get($addresAdmin.'/project/list',  'ProjectController@index')->name('admin.project');
 	Route::get($addresAdmin.'/project/add',  'ProjectController@add')->name('project.add');	
 	Route::post($addresAdmin.'/project/addProject',  'ProjectController@addProject')->name('project.addProject');	
+	Route::get($addresAdmin.'/project/edit/{id}',  'ProjectController@edit')->name('	project.addProject');	
+
 
 	//maquineta
 	Route::get($addresAdmin.'/maquineta/list',  'MaquinetaController@list')->name('maquineta.list');
@@ -24,7 +26,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 	Route::get($addresAdmin.'/template/edit/{id}',  'TemplateController@edit')->name('template.edit');
 
 	//course
-	Route::get($addresAdmin.'/course/listProject',  'CourseController@listProject')->name('course.listProject');
+	Route::get($addresAdmin.'/course/listProject/{projectId?}',  'CourseController@listProject')->name('course.listProject');
 	Route::post($addresAdmin.'/course/add',  'CourseController@add')->name('course.add');
 
 	//module

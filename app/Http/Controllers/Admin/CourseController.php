@@ -18,6 +18,11 @@ class CourseController extends Controller
         return $Course->getCourseById($Id);
     }
 
+    public function getCourseByProjectId($Id, Course $Course){
+        return $Course->getCourseByProjectId($Id);
+    }
+    
+
     public function add(Request $request, Course $Course){
     	
     	//auth()->user()->Course;
@@ -42,8 +47,15 @@ class CourseController extends Controller
 
             $project = new Project();
             $maquineta = new Maquineta();
-            $project = $project->getProject()[0];
-                                    
+
+            
+            if($request->projectId){
+                $project = $project->getProjectById($request->projectId)[0];
+            }else{
+                $project = $project->getProject()[0];
+            }    
+            
+                                  
             $data = [
                 'projectId' => $project->id,
                 'projectName' => $project->name
@@ -52,7 +64,7 @@ class CourseController extends Controller
             $data['maquineta']       = (object)$maquineta->list();
             
             $result = (object)$data;
-
+            
             return view('admin.course.listProject', compact('result'));
               
         } catch (Exception $e) {
@@ -74,4 +86,22 @@ class CourseController extends Controller
         }
         
     }
+
+    public function getModuleByCorseId($Id)
+    {
+        try {
+
+            $course = new Course();
+            return $course->getModuleByCorseId($Id);
+        
+        } catch (Exception $e) {
+            
+        }
+        
+    }
+
+
+
+
+    
 }

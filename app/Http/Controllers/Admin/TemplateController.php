@@ -81,6 +81,14 @@ class TemplateController extends Controller
         return $result;
     }
 
+    public function getTemplateByModuleId($Id){
+        $model = new Template();
+        $result = $model->getTemplateByModuleId($Id);
+        return $result;
+    }
+
+    
+
     public function getByMaquinetaId($maquinetaId){
 
         $model = new Template();

@@ -39,5 +39,18 @@ class Project extends Model
 		}
 		
 	}
+
+	public function getAll()
+	{
+		try {
+			
+			$results = DB::select('SELECT * FROM gte_builder.projects  order by id asc');
+			return $results;	
+		
+		} catch (Exception $e) {
+			
+		}
+		
+	}
     
 }

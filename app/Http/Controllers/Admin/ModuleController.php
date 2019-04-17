@@ -23,6 +23,13 @@ class ModuleController extends Controller
         return $module->getModuleById($Id);
     }
 
+    public function getModuleByCorseId($Id){
+        $module = new Module();
+        return $module->getModuleByCorseId($Id);
+    }
+
+    
+
     public function add(Request $request, Module $Module){
     	
     	try {
