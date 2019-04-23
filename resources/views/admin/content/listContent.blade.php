@@ -4,9 +4,6 @@
 @section('style')
     
 
-    <link href="{{ asset('educacao_midiatica/css/css.css') }}" rel="stylesheet">
-    
-
 @show
 
 
@@ -19,7 +16,7 @@
 @section('content')
 
 
-{!! html_entity_decode($result->template) !!}
+{!! html_entity_decode($result->template2) !!}
 
 
 

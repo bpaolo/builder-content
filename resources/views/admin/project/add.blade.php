@@ -8,6 +8,13 @@
 
 
 @section('content')
+@if(session('error'))
+  <div class="alert alert-danger">
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+      <strong>Erro!</strong>
+      Já exiiste um projeto cadastrado com esse nome!.
+  </div>
+@endif
 <div class="wrapper" style="height: auto; min-height: 100%;">
   <div class="class="content-wrapper"">
     <div class="content-header">
@@ -21,6 +28,7 @@
         <li class="active">cadastrar</li>
         </ol>
       </section>
+      
       <section class="content">
             <div class="row">
               <div class="col-md-6">

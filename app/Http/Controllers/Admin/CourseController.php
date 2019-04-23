@@ -28,11 +28,29 @@ class CourseController extends Controller
     	//auth()->user()->Course;
     	//dd(auth()->user());
     	try {
-        
+            
             $name = $request->courseName;
             $projectId = $request->projectId;
+    
+
             $maquinetaId = $request->maquinetaId;
-            $id = $Course->addCourse($name,$projectId,$maquinetaId);  
+            $id = $Course->addCourse($name,$projectId,$maquinetaId); 
+
+            //salvar repositorio
+            $modelProject = new Project();
+            $project = $modelProject->getProjectById($request->projectId);
+            
+            $dirProject = preg_replace('/[^A-Za-z0-9-]/', '', $project[0]->name);
+            $dirCourse = preg_replace('/[^A-Za-z0-9-]/', '', $name);
+
+
+            if(is_dir(env('APP_REPOSITORY').'/projetos/'.$dirProject.'/'.$dirCourse.'/')) { 
+                return back()->withError('erro');
+            }
+            else { 
+                mkdir(env('APP_REPOSITORY').'/projetos/'.$dirProject.'/'.$dirCourse.'/', 0777, true);
+            }
+
             return redirect('/home/admin/module/listModule/'.$id);
 
         } catch (Exception $e) {

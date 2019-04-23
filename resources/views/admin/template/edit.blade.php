@@ -3,7 +3,7 @@
 
 @section('style')
  <style>  
-        .accordion {  
+        /*.accordion {  
             background-color: #eee;  
             color: #444;  
             cursor: pointer;  
@@ -26,7 +26,7 @@
             display: none;  
             background-color: white;  
             overflow: hidden;  
-        }
+        }*/
 
 /*aba*/
 
@@ -285,7 +285,7 @@ Image credits: unsplash.com
             <div>
 
       </section>
-      {!! html_entity_decode($result->template) !!}
+      {!! html_entity_decode($result->template2) !!}
     </div>
   </div>
 </div>   

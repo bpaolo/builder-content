@@ -52,14 +52,20 @@
                                 	<ul class="list-group">
                                 	<li class="list-group-item" style="background-color: #3c8dbc; color: rgba(255, 255, 255, 0.9); font-size: 20px;">Curso : {{ $curso->name }}
 
-										<div  style="display: inline; width: 25%; float: right; font-size: 10px;" ><i class="fa fa-fw fa-plus-square"></i>adicionar módulo</div>
+										<a href="https://localhost/gte-builder/public/home/admin/module/listModule/{{$curso->id}}" class="" aria-expanded="true">
+										<div  style="display: inline; width: 25%; float: right; font-size: 10px; color: #FFFFFF;">
+											<i class="fa fa-fw fa-plus-square"></i>adicionar módulo
+										</div>
+										</a>
 
                                 	</li>
                                 	
                                 		@foreach ($curso->modulos as $i =>  $modulos)
 						  				<li class="list-group-item" style="    background-color: #5fa5ce; color: rgba(255, 255, 255, 0.9);">Módulo : {{ $modulos->name }}
 
-						  					<div  style="display: inline; width: 25%; float: right; font-size: 10px;"><i class="fa fa-fw fa-plus-square"></i>adicionar Página</div>
+						  					<a href="https://localhost/gte-builder/public/home/admin/module/listModule/{{$curso->id}}/{{$modulos->id}}" class="" aria-expanded="true">
+						  						<div  style="display: inline; width: 25%; float: right; font-size: 10px; color: #FFFFFF"><i class="fa fa-fw fa-plus-square"></i>  adicionar Página</div>
+						  					</a>
 
 						  				
 										</li>

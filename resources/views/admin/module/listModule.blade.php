@@ -35,7 +35,7 @@
                       <div class="box-body">
                         <div class="form-group">
                           <label for="moduleName">Nome Módulo</label>
-                          <input name="moduleName" type="text" class="form-control" id="moduleName" value="">
+                          <input name="moduleName" type="text" class="form-control" id="moduleName" value="{{ !empty($result->moduleName) ? $result->moduleName : '' }}" {{ !empty($result->moduleName) ? 'disabled' : '' }}>
                         </div>
                         <div class="form-group">
                           <label for="name">Selecione um Templates</label>
@@ -61,6 +61,8 @@
                         <input name="maquinetaName" type="hidden" value="{{ $result->maquinetaName }}">
                         <input name="courseId" type="hidden" value="{{ $result->courseId }}">
                         <input name="courseName" type="hidden" value="{{ $result->courseName }}">
+                        <input name="moduleId" type="hidden" value="{{ !empty($result->moduleId) ? $result->moduleId : '' }}">
+                       
                       <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Salvar</button>
                       </div>

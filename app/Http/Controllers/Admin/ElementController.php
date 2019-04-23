@@ -18,8 +18,8 @@ class ElementController extends Controller
 
         $model   = new Element();
         $element = $this->getElementById($request['elementId']);
-        
-    	$id =  $model->add($request['templateId'], $request['elementId'], $element[0]->name, $element[0]->description, $element[0]->element);
+            
+    	$id =  $model->add($request['templateId'], $request['elementId'], $element[0]->name, $element[0]->description, $element[0]->element, $element[0]->maquineta_id);
 
         $templateId = $request['templateId'];
 
@@ -33,7 +33,7 @@ class ElementController extends Controller
 
     public function update($id, $content)
     {
-
+        
         $model  = new Element();
         $result = $model->update($id, $content);
         return $result;
@@ -51,6 +51,13 @@ class ElementController extends Controller
 
         $model = new Element();
         $result = $model->getAllElement();
+        return $result;
+    }
+
+    public function getAllElementByMaquinetaId($id){
+
+        $model = new Element();
+        $result = $model->getAllElementByMaquinetaId($id);
         return $result;
     }
 

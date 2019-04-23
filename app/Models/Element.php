@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Element extends Model
 {
 	
-	public function add($templateId, $base, $name, $description, $element)
+	public function add($templateId, $base, $name, $description, $element,$maquinetaId)
 	{
 
 		$id = DB::table('elements')->insertGetId(
@@ -17,7 +17,8 @@ class Element extends Model
 		    	'base' => $base,
 		    	'name' => $name,
 		    	'description' => $description,
-		    	'element' => $element
+		    	'element' => $element,
+		    	'maquineta_id' => $maquinetaId
 
 			]
 		);
@@ -73,6 +74,22 @@ class Element extends Model
 		}
 
 	}
+
+	public function getAllElementByMaquinetaId($id)
+	{
+		try {
+			
+			$results = DB::select('select * from Elements where maquineta_id = '.$id.' AND base = 0');
+			return $results;	
+
+		} catch (Exception $e) {
+			
+		}
+
+	}
+
+
+	
 
 	public function getElementByTemplateId($templateId)
 	{
