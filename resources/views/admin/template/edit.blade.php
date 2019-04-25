@@ -29,7 +29,7 @@
         }*/
 
 /*aba*/
-
+/*
     .abas {
     position: relative;
     }
@@ -55,18 +55,18 @@
     .conteudo {
     position: absolute;
     left: 0;
-    top: calc(2em + 4px); /* altura do link + bordas */
+    top: calc(2em + 4px); 
     z-index: -2;
     border: 1px solid #CCC;
     background-color: white;
     }
     .aba:target .conteudo {
     z-index: -1;
-    }  
+    }  */
 
 
 /*carrossel*/
-
+/*
 .carousel-fade .carousel-inner .item {
   -webkit-transition-property: opacity;
   transition-property: opacity;
@@ -102,7 +102,7 @@ Image credits: unsplash.com
 /********************************/
 /*       Fade Bs-carousel       */
 /********************************/
-.fade-carousel {
+/*.fade-carousel {
     position: relative;
     height: 100vh;
 }
@@ -124,7 +124,7 @@ Image credits: unsplash.com
 /********************************/
 /*          Hero Headers        */
 /********************************/
-.hero {
+/*.hero {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -167,7 +167,7 @@ Image credits: unsplash.com
 /********************************/
 /*            Overlay           */
 /********************************/
-.overlay {
+/*.overlay {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -179,7 +179,7 @@ Image credits: unsplash.com
 /********************************/
 /*          Custom Buttons      */
 /********************************/
-.btn.btn-lg {padding: 10px 40px;}
+/*.btn.btn-lg {padding: 10px 40px;}
 .btn.btn-hero,
 .btn.btn-hero:hover,
 .btn.btn-hero:focus {
@@ -193,7 +193,7 @@ Image credits: unsplash.com
 /********************************/
 /*       Slides backgrounds     */
 /********************************/
-.fade-carousel .slides .slide-1, 
+/*.fade-carousel .slides .slide-1, 
 .fade-carousel .slides .slide-2,
 .fade-carousel .slides .slide-3 {
   height: 100vh;
@@ -214,7 +214,7 @@ Image credits: unsplash.com
 /********************************/
 /*          Media Queries       */
 /********************************/
-@media screen and (min-width: 980px){
+/*@media screen and (min-width: 980px){
     .hero { width: 980px; }    
 }
 @media screen and (max-width: 640px){
@@ -228,7 +228,7 @@ Image credits: unsplash.com
 
     </style>     
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
     
 
@@ -291,24 +291,6 @@ Image credits: unsplash.com
 </div>   
 
 
-
-
-
-<script>  
-        var acc = document.getElementsByClassName("accordion");  
-        var i;  
-        for (i = 0; i < acc.length; i++) {  
-            acc[i].addEventListener("click", function () {  
-                this.classList.toggle("active");  
-                var panel = this.nextElementSibling;  
-                if (panel.style.display === "block") {  
-                    panel.style.display = "none";  
-                } else {  
-                    panel.style.display = "block";  
-                }  
-            });  
-        }  
-    </script>  
 
 
 @stop

@@ -23,7 +23,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 	//template
 	Route::post($addresAdmin.'/template/list',  'TemplateController@list')->name('template.list');
 	Route::post($addresAdmin.'/template/add',  'TemplateController@add')->name('template.add');
-	Route::get($addresAdmin.'/template/edit/{id}',  'TemplateController@edit')->name('template.edit');
+	Route::get($addresAdmin.'/template/edit/{id?}',  'TemplateController@edit')->name('template.edit');
 
 	//course
 	Route::get($addresAdmin.'/course/listProject/{projectId?}',  'CourseController@listProject')->name('course.listProject');
@@ -44,6 +44,8 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 	Route::get($addresAdmin.'/content/edit/{id}/{templateId}',  'ContentController@edit')->name('content.edit');
 
 	Route::get($addresAdmin.'/content/formEdit/{id}/{templateId}', 'ContentController@formEdit')->name('content.formEdit');
+
+	Route::get($addresAdmin.'/content/del/{id?}/{templateId?}', 'ContentController@removeElement')->name('content.formEdit');
 
 	Route::get($addresAdmin.'/content/element/{id}', 'ContentController@element')->name('content.element');
 

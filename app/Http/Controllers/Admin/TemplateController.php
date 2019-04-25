@@ -25,6 +25,7 @@ class TemplateController extends Controller
     }
 
     public function edit($id){
+    
 
         $element  = new Element();
         $content  = new Content();
@@ -43,9 +44,19 @@ class TemplateController extends Controller
             
             if(!empty($value->content)){
                 $elementId = $value->id;
+                $templateId = $value->template_id;
+
+                #TODO view de imagem interna
+                if($value->name == 'element6'){
+                    $value->content = str_replace('C:/xampp/htdocs/gte-builder/public/', '../../../../', $value->content);
+                }
+                
                 $ElementAndContent = str_replace('$content', $value->element, $value->content);
                 $component .= $ElementAndContent;
-                $componentEdit .='<a href="https://localhost/gte-builder/public/home/admin/content/element/'.$elementId.'"><i class="fa fa-fw fa-edit"></i></a>'.$ElementAndContent;
+                $componentEdit .='<a href="'.env('APP_URL').'home/admin/content/formEdit/'.$elementId.'/'.$templateId.'"><i class="fa fa-fw fa-edit"></i></a>'.   '|'  .'<a href="'.env('APP_URL').'home/admin/content/del/'.$elementId.'/'.$templateId.'"><i class="fa fa-fw fa-remove" style="color:#da4242"></i></a><div class="box box-primary">
+              </div>'.$ElementAndContent;
+
+                
 
                 //$componentEdit .='<div onclick="window.location='.'http://google.com/'.$elementId.'">'.$value->content.'</div>';
 
@@ -73,6 +84,7 @@ class TemplateController extends Controller
                 $string  = $result->template;
                 $string2  = $result->template2;
 
+
                 $result->template = str_replace('$allElement',$component, $string);
                 $result->template2 = str_replace('$allElement',$componentEdit, $string2);
                 
@@ -86,6 +98,8 @@ class TemplateController extends Controller
 
             $string  = $result->template;
             $string2  = $result->template2;
+            
+            //$cantent = str_replace("C:/xampp/htdocs/gte-builder/public", "../../../..", $content);
             $result->template = str_replace('$content'.$k,$component['conteudo'][$k], $string);
             $result->template2 = str_replace('$content'.$k,$component['conteudo'][$k], $string2);
             

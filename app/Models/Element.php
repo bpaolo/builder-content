@@ -27,14 +27,26 @@ class Element extends Model
 	}
 
 
-	public function updateElement($id, $content)
+	public function updateElement($id, $content, $cantent)
 	{
+		
 		$id = DB::table('elements')
 				->where('id',$id)
-				->update(['content'=>$content]);
+				->update(['content'=>$content, 'cantent'=> $cantent]);
 		return $id;
 	}
 
+	public function removeElement($data)
+	{
+		
+		$results = DB::delete('DELETE FROM Elements where id = '.$data['elementId']);
+
+			return $results;
+		
+	}
+
+
+        
 
 	public function getElementByMaquinetaId($maquinetaId)
 	{
