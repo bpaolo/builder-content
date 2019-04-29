@@ -12,7 +12,7 @@
   <div class="alert alert-danger">
     <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
       <strong>Erro!</strong>
-      Já exiiste um projeto cadastrado com esse nome!.
+      Já existe um projeto cadastrado com esse nome!.
   </div>
 @endif
 <div class="wrapper" style="height: auto; min-height: 100%;">

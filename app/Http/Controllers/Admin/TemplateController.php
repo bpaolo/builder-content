@@ -47,14 +47,14 @@ class TemplateController extends Controller
                 $templateId = $value->template_id;
 
                 #TODO view de imagem interna
-                if($value->name == 'element6'){
+                if($value->name == 'element5' || $value->name == 'element6' || $value->name == 'element9' || $value->name == 'element8'){
                     $value->content = str_replace('C:/xampp/htdocs/gte-builder/public/', '../../../../', $value->content);
                 }
                 
                 $ElementAndContent = str_replace('$content', $value->element, $value->content);
                 $component .= $ElementAndContent;
-                $componentEdit .='<a href="'.env('APP_URL').'home/admin/content/formEdit/'.$elementId.'/'.$templateId.'"><i class="fa fa-fw fa-edit"></i></a>'.   '|'  .'<a href="'.env('APP_URL').'home/admin/content/del/'.$elementId.'/'.$templateId.'"><i class="fa fa-fw fa-remove" style="color:#da4242"></i></a><div class="box box-primary">
-              </div>'.$ElementAndContent;
+                $componentEdit .='<div><a href="'.env('APP_URL').'home/admin/content/formEdit/'.$elementId.'/'.$templateId.'"><i class="fa fa-fw fa-edit"></i></a>'.   '|'  .'<a href="'.env('APP_URL').'home/admin/content/del/'.$elementId.'/'.$templateId.'"><i class="fa fa-fw fa-remove" style="color:#da4242"></i></a><div class="box box-primary">
+              </div>'.$ElementAndContent.'</div>';
 
                 
 

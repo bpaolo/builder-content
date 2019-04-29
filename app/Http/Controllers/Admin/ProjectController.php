@@ -34,7 +34,7 @@ class ProjectController extends Controller
             
 
             $name = $request->name;
-            $project->addProject($name);
+            
             $dir = preg_replace('/[^A-Za-z0-9-]/', '', $request->name);
 
 
@@ -44,22 +44,7 @@ class ProjectController extends Controller
             else { 
                 mkdir(env('APP_REPOSITORY').'/projetos/'.$dir.'/', 0777, true);
             }
-            /*
-            @if(session('error'))
-                  <div class="alert alert-danger">
-                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                      <strong>Erro!</strong>
-                      Erro! Este projeto já está cadastrado!.
-                  </div>
-              @endif
-
-              @if(session('mensagem'))
-                <div class="alert alert-success">
-                    <p>{{session('mensagem')}}</p>
-                </div>
-            @endif
-
-            */
+            $project->addProject($name);
 
             
             

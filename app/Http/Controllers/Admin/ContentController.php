@@ -49,9 +49,14 @@ class ContentController extends Controller
         
         
         #TODO view de imagem interna
-        if($dataElement[0]->name == 'element6'){
+        if($dataElement[0]->name == 'element6' || $dataElement[0]->name == 'element5' || $dataElement[0]->name == 'element8'){
 
             $dataElement[0]->cantent = str_replace('C:/xampp/htdocs/gte-builder/public/', '../../../../../', $dataElement[0]->content);
+        }
+
+        if($dataElement[0]->name == 'element9'){
+
+            $dataElement[0]->cantent = str_replace('C:/xampp/htdocs/gte-builder/public/', '../../../../../', $dataElement[0]->cantent);
         }
         $data['cantent'] = $dataElement[0]->cantent;       
         
@@ -114,7 +119,7 @@ class ContentController extends Controller
         //MAQUINETA 1
         if($dataElement->maquineta_id == 1){
             $result = $this->maquineta1($request->content,$dataElement);
-            
+                
             $str = $result['content'];
             $cantent = $result['cantent'];
         }
@@ -162,6 +167,7 @@ class ContentController extends Controller
         //Elemento Texto
         if($dataElement->name == 'element5'){
             
+            $content = str_replace('../../../../../',env('APP_URL'), $content);
             $result['content'] = $content;
             $result['cantent'] = $content;
         }
@@ -169,7 +175,7 @@ class ContentController extends Controller
         //Elemento imagem
         if($dataElement->name == 'element6'){
             
-            $content = str_replace('../../../../../','C:/xampp/htdocs/gte-builder/public/', $content);
+            $content = str_replace('../../../../../',env('APP_URL'), $content);
             
             $result['content'] = $content;
             $result['cantent'] = $content;
@@ -183,13 +189,37 @@ class ContentController extends Controller
             $result['cantent'] = $box['cantent'];
         }
 
-        
         //Elemento Acordeon
         if($dataElement->name == 'element8'){
+
+            $content = str_replace('../../../../../',env('APP_URL'), $content);
+            
+            $result = $this->accordion_maquineta1($content,$dataElement->name);
+        }
+
+        //Elemento Aba
+        if($dataElement->name == 'element9'){
+            
+            
+            $aba = $this->aba_maquineta1($content,$dataElement->name);
+
+            
+            $aba['content'] = str_replace('../../../../../',env('APP_URL'), $aba['content']);
+
+            $result['cantent']  = $aba['cantent'];
+            $result['content'] = $aba['content'];
+            
+            return $result;
+            
+        }       
+        //Elemento Aba
+        /*if($dataElement->name == 'element9'){
+
+            $str = $this->aba($contentElement);*/
                 
                 // || $dataElement->base == 325 || $dataElement->base == 357)
                 //$remover = preg_replace("/<p>/","", $request->content);
-                $result = $this->accordion_maquineta1($content,$dataElement->name);
+                
                 
                 
                 /*$partes  = explode("&gt;&gt;",$content);
@@ -243,7 +273,7 @@ class ContentController extends Controller
                 
 
                 
-            }
+            //}
 
 
 
@@ -339,12 +369,16 @@ class ContentController extends Controller
 
     }
 
-    public function aba($input){
+    public function aba_maquineta1($content,$element){
+
+
+        $input = $this->BreakPart($content,$element);
+
         $abaSection = null;
         $abaSection .= '<div class="bs-example"><ul class="nav nav-tabs">';
 
         $key = 0;
-        foreach ($input as $key => $value) {
+        foreach ($input['content'] as $key => $value) {
             if($key == 0){
                 $abaSection .= '<li class="active"><a data-toggle="tab" href="#section'.$key.'">
                         '.$value[0].'</a></li>';                
@@ -359,19 +393,23 @@ class ContentController extends Controller
         $abaSection .= '</ul><div class="tab-content">';
 
         $key2 = 0;
-        foreach ($input as $key2 => $value) {
+        foreach ($input['content'] as $key2 => $value) {
 
             if($key2 == 0){
                 $abaSection .= '<div id="section'.$key2.'" class="tab-pane fade in active"><p>'.$value[1].'</p></div>';
-            }
+            }else{
                 
             $abaSection .= '<div id="section'.$key2.'" class="tab-pane fade"><p>'.$value[1].'</p></div>';
             $key2++;
+            }
         }
             $abaSection .= '</div></div>';
 
 
-            return $abaSection;
+        $result['content'] =  $abaSection;
+        $result['cantent'] =  $content;
+        
+        return $result;
        
     }
 
