@@ -9,6 +9,7 @@ use App\Models\Element;
 
 class ContentController extends Controller
 {
+
     public function index(){
     	return view('admin.Content.index');
     }
@@ -49,12 +50,22 @@ class ContentController extends Controller
         
         
         #TODO view de imagem interna
-        if($dataElement[0]->name == 'element6' || $dataElement[0]->name == 'element5' || $dataElement[0]->name == 'element8'){
+        if($dataElement[0]->name == 'element6' || $dataElement[0]->name == 'element5'){
 
             $dataElement[0]->cantent = str_replace('C:/xampp/htdocs/gte-builder/public/', '../../../../../', $dataElement[0]->content);
         }
 
+        if($dataElement[0]->name == 'element8'){
+
+            $dataElement[0]->cantent = str_replace('C:/xampp/htdocs/gte-builder/public/', '../../../../../', $dataElement[0]->cantent);
+        }
+
         if($dataElement[0]->name == 'element9'){
+
+            $dataElement[0]->cantent = str_replace('C:/xampp/htdocs/gte-builder/public/', '../../../../../', $dataElement[0]->cantent);
+        }
+
+        if($dataElement[0]->name == 'element11'){
 
             $dataElement[0]->cantent = str_replace('C:/xampp/htdocs/gte-builder/public/', '../../../../../', $dataElement[0]->cantent);
         }
@@ -191,10 +202,14 @@ class ContentController extends Controller
 
         //Elemento Acordeon
         if($dataElement->name == 'element8'){
-
-            $content = str_replace('../../../../../',env('APP_URL'), $content);
             
-            $result = $this->accordion_maquineta1($content,$dataElement->name);
+            $accordion = $this->accordion_maquineta1($content,$dataElement->name);
+
+            $accordion['content'] = str_replace('../../../../../',env('APP_URL'), $accordion['content']);
+
+            $result['cantent']  = $accordion['cantent'];
+            $result['content']  = $accordion['content'];
+
         }
 
         //Elemento Aba
@@ -208,6 +223,21 @@ class ContentController extends Controller
 
             $result['cantent']  = $aba['cantent'];
             $result['content'] = $aba['content'];
+            
+            return $result;
+            
+        } 
+
+        //Elemento carrossel
+        if($dataElement->name == 'element11'){
+            
+            $carousel = $this->carousel_maquineta1($content,$dataElement->name);
+
+            
+            $carousel['cantent'] = str_replace('../../../../../',env('APP_URL'),$carousel['cantent']);
+
+            $result['cantent']  = $carousel['cantent'];
+            $result['content'] = $carousel['content'];
             
             return $result;
             
@@ -414,7 +444,19 @@ class ContentController extends Controller
     }
 
 
-    public function carousel($input){
+    public function carousel_maquineta1($content,$element){
+
+        $input = $this->BreakPart($content,$element);
+        //$line = $input['content'][0][0];
+
+        /*$str = 'O Candidato fulano de tal foi visitar várias cidades do estado <img src="imagem1.jpg" /> para divulgar a sua candidatura, <img src="/teste/teste/imagem2.jpg" />na manha de ontem ele estava numa reunião para ver.';
+preg_match_all('/src="([^"]+)/', $str, $images);
+dd($images[1]);*/
+
+        
+
+
+
         $carousel = null;
         $carousel .= '<div class="container">
            
@@ -423,7 +465,7 @@ class ContentController extends Controller
             <ol class="carousel-indicators">';
 
             $key = 0;
-            foreach ($input as $key => $value) {
+            foreach ($input['content'] as $key => $value) {
 
                 if($key == 0){
                     $carousel .=   '<li data-target="#myCarousel" data-slide-to="'.$key.'" class="active"></li>';
@@ -436,19 +478,25 @@ class ContentController extends Controller
             $carousel .= '<div class="carousel-inner">';
             $key2 = 0;
 
-            foreach ($input as $key2 => $value) {
+            foreach ($input['content'] as $key2 => $value) {
 
                 if($key2 == 0){  
-                    $carousel .= '<div class="item active"><div class="desc">'.$value[1].'</div><img src="'.$value[0].'" alt="Los Angeles" style="width:100%;"></div>';
+
+                    //preg_match_all('/src="([^"]+)/', $str, $images);
+                    //dd($images[1]);
+                    $carousel .= '<div class="item active"><div class="desc">'.$value[1].'</div>'.$value[0].'</div>';
                 }
                 else{                
-                    $carousel .= '<div class="item"><div class="desc">'.$value[1].'</div><img src="'.$value[0].'" alt="Los Angeles" style="width:100%;"></div>';
+                    $carousel .= '<div class="item"><div class="desc">'.$value[1].'</div>'.$value[0].'</div>';
                 }    
             }
             $carousel .= '</div>';
             $carousel .= '<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next</span></a></div></div>';
 
-            return $carousel;
+        $result['content'] =  $carousel;
+        $result['cantent'] =  $content;
+        
+        return $result;
     }
 
     public function getContentBytemplateIdElementiId($templateId, $elementId){

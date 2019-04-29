@@ -47,7 +47,7 @@ class TemplateController extends Controller
                 $templateId = $value->template_id;
 
                 #TODO view de imagem interna
-                if($value->name == 'element5' || $value->name == 'element6' || $value->name == 'element9' || $value->name == 'element8'){
+                if($value->name == 'element5' || $value->name == 'element6' || $value->name == 'element9' || $value->name == 'element8' || $value->name == 'element11'){
                     $value->content = str_replace('C:/xampp/htdocs/gte-builder/public/', '../../../../', $value->content);
                 }
                 
