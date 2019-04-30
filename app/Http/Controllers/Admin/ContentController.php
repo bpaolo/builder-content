@@ -234,14 +234,25 @@ class ContentController extends Controller
             $carousel = $this->carousel_maquineta1($content,$dataElement->name);
 
             
-            $carousel['cantent'] = str_replace('../../../../../',env('APP_URL'),$carousel['cantent']);
+            $carousel['content'] = str_replace('../../../../../',env('APP_URL'),$carousel['content']);
 
             $result['cantent']  = $carousel['cantent'];
             $result['content'] = $carousel['content'];
             
             return $result;
             
-        }       
+        }
+
+        //Elemento carrossel
+        if($dataElement->name == 'element13'){
+            
+
+            $result['cantent']  = $content;
+            $result['content'] = $content;
+            
+            return $result;
+            
+        }        
         //Elemento Aba
         /*if($dataElement->name == 'element9'){
 

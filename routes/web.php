@@ -24,6 +24,9 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 	Route::post($addresAdmin.'/template/list',  'TemplateController@list')->name('template.list');
 	Route::post($addresAdmin.'/template/add',  'TemplateController@add')->name('template.add');
 	Route::get($addresAdmin.'/template/edit/{id?}',  'TemplateController@edit')->name('template.edit');
+	Route::get($addresAdmin.'/template/download/{id?}',  'TemplateController@downloadFile')->name('template.donwload');
+
+	
 
 	//course
 	Route::get($addresAdmin.'/course/listProject/{projectId?}',  'CourseController@listProject')->name('course.listProject');
@@ -50,6 +53,8 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 	Route::get($addresAdmin.'/content/element/{id}', 'ContentController@element')->name('content.element');
 
 	Route::post($addresAdmin.'/content/save',  'ContentController@save')->name('content.save');
+
+	
 });
 
 Route::group(['middleware' => ['auth'], 'namespace' => 'home'], function(){

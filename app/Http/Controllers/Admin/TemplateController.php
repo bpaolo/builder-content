@@ -24,6 +24,30 @@ class TemplateController extends Controller
     	return addTemplate($maquinetaId, $name, $template, $modulo_id);
     }
 
+    public function download($id){
+
+        dd('testette');
+        $result = $this->getTemplateById($id)[0];
+        $modelProject   = new Project();
+            $modelCourse    = new Course();
+            $modelModule    = new Module();
+
+            $module     = $modelModule->getModuleById($result->modulo_id);
+
+
+            $course     = $modelCourse->getCourseById($module[0]->course_id);
+            $project    = $modelProject->getProjectById($course[0]->project_id);
+
+            $dirProject = preg_replace('/[^A-Za-z0-9-]/', '', $projectName);
+            $dirCourse = preg_replace('/[^A-Za-z0-9-]/', '', $courseName);
+            $dirModule = preg_replace('/[^A-Za-z0-9-]/', '', $moduleName);
+        
+        $path = env('APP_REPOSITORY').'/projetos/'.$dirProject.'/'.$dirCourse.'/'.$dirModule.'/';
+        $namePagina = preg_replace('/[^A-Za-z0-9-]/', '', $result->name);
+            dd($path.'/'.$namePagina.".html");
+    
+    }
+
     public function edit($id){
     
 
@@ -36,12 +60,34 @@ class TemplateController extends Controller
         $getAllContents      = $content->getAllContentBytemplateId($id);
         $component = null;
         $componentEdit = null;
+
+        //download arquivo
+        
+        $modelProject       = new Project();
+            $modelCourse    = new Course();
+            $modelModule    = new Module();
+
+            $module     = $modelModule->getModuleById($result->modulo_id);
+            $course     = $modelCourse->getCourseById($module[0]->course_id);
+            $project    = $modelProject->getProjectById($course[0]->project_id);
+
+            $courseName     = $course[0]->name;
+            $moduleName     = $module[0]->name;
+            $projectName    = $project[0]->name;
+
+            $dirProject = preg_replace('/[^A-Za-z0-9-]/', '', $projectName);
+            $dirCourse = preg_replace('/[^A-Za-z0-9-]/', '', $courseName);
+            $dirModule = preg_replace('/[^A-Za-z0-9-]/', '', $moduleName);
+        
+        $path = env('APP_URL').'projetos/'.$dirProject.'/'.$dirCourse.'/'.$dirModule.'/';
+        $namePagina = preg_replace('/[^A-Za-z0-9-]/', '', $result->name);
+            
+        //fim
         
 
         foreach ($getAllElements as $value) {
                 //adiciona o conteudo ao elemento
 
-            
             if(!empty($value->content)){
                 $elementId = $value->id;
                 $templateId = $value->template_id;
@@ -53,9 +99,27 @@ class TemplateController extends Controller
                 
                 $ElementAndContent = str_replace('$content', $value->element, $value->content);
                 $component .= $ElementAndContent;
-                $componentEdit .='<div><a href="'.env('APP_URL').'home/admin/content/formEdit/'.$elementId.'/'.$templateId.'"><i class="fa fa-fw fa-edit"></i></a>'.   '|'  .'<a href="'.env('APP_URL').'home/admin/content/del/'.$elementId.'/'.$templateId.'"><i class="fa fa-fw fa-remove" style="color:#da4242"></i></a><div class="box box-primary">
+                $componentEdit .='
+                <div>
+                    <a href="'.env('APP_URL').'home/admin/content/formEdit/'.$elementId.'/'.$templateId.'">
+                        <i class="fa fa-fw fa-edit"></i>
+                    </a>
+                    '.   '|'  .'
+                    <a href="'.env('APP_URL').'home/admin/content/del/'.$elementId.'/'.$templateId.'">
+                        <i class="fa fa-fw fa-remove" style="color:#da4242"></i>
+                    </a>
+                    '.   '|'  .'
+                    <a href="'.$path.$namePagina.'.html" target="_blank">
+                        <i class="fa fa-eye" ></i>
+                    </a>
+                    '.   '|'  .'
+                    <a href="'.$path.$namePagina.'.html" target="_blank" download>
+                        <i class="fa fa-cloud-download" ></i>
+                    </a>
+                <div class="box box-primary">
               </div>'.$ElementAndContent.'</div>';
 
+            
                 
 
                 //$componentEdit .='<div onclick="window.location='.'http://google.com/'.$elementId.'">'.$value->content.'</div>';
