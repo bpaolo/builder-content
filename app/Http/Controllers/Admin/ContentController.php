@@ -253,68 +253,7 @@ class ContentController extends Controller
             return $result;
             
         }        
-        //Elemento Aba
-        /*if($dataElement->name == 'element9'){
-
-            $str = $this->aba($contentElement);*/
-                
-                // || $dataElement->base == 325 || $dataElement->base == 357)
-                //$remover = preg_replace("/<p>/","", $request->content);
-                
-                
-                
-                /*$partes  = explode("&gt;&gt;",$content);
-
-                //unset($partes[0]);
-                foreach ($partes as $key => $value) {
-
-                    if(!empty($value)){
-                        $accordion[$key] = $value;
-
-                       
-                    }
-                }
-                
-                //tratar sujeira de estilo
-                $input_array = $accordion;
-                
-                //lista de elementos removidos do accordion
-                $vowels = array("<p><strong>","<strong><p>", "</strong></p>", "</p>","<p>" ,"\r","\n");
-                $content = str_replace($vowels, "", $input_array);
-
-                //remover elementos vazios
-                $key = array_search("", $content);
-                    if($key == ""){
-                        unset($content[$key]);
-                    }
-
-                $contentElement = array_chunk($content, 2);
-                $str = null;
-
-                if($dataElement->base == 325){
-                   
-                    $str = $this->aba($contentElement);
-
-                }
-
-                //carrossel
-                if($dataElement->base == 357){
-                   
-                    $str = $this->carousel($contentElement);
-
-                }
-                
-                if($dataElement->base == 284){
-                    foreach ($contentElement as $value) {
-                       $result = null;
-                        $result .= '<button class="accordion">'.$value[0].'</button><div class="panel"><p>'.$value[1].'</p></div>';
-                    }
-
-                }*/
-                
-
-                
-            //}
+        
 
 
 
@@ -612,6 +551,23 @@ dd($images[1]);*/
         $result['leanContent'] = $leanContent;
         $result['result'] = $mp017mp18;
         return $result;
+
+    }
+
+    public function getOrder(Request $request){
+$result = json_encode([
+    ['id' => 1,'title' => "ronifer", 'pos' => 1],
+    ['id' => 2,'title' => "Marcelo", 'pos' => 2]
+]);
+
+
+        return view('admin.content.getOrder', compact('result'));
+
+    }
+
+    public function saveOrder(Request $request){
+
+        dd($request->all());
 
     }
 

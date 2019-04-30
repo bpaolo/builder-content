@@ -24,7 +24,7 @@
       <section class="content-header">
         <h1>
         Projeto
-        <small>administrador</small>
+        <small></small>
         </h1>
         <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Projeto</a></li>
@@ -52,17 +52,21 @@
                       <input name="templateId" type="hidden" value="{{ $result->id }}">
                       
                       <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> cadastrar</button>
                       </div>
+
+
+
                       
                     </form>
-                                        
+
                 </div>
               </div>
              </div>
             <div>
 
       </section>
+
       {!! html_entity_decode($result->template2) !!}
     </div>
   </div>

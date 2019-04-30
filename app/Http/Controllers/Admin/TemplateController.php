@@ -116,6 +116,10 @@ class TemplateController extends Controller
                     <a href="'.$path.$namePagina.'.html" target="_blank" download>
                         <i class="fa fa-cloud-download" ></i>
                     </a>
+                    '.   '|'  .'
+                    <a href="'.env('APP_URL').'home/admin/content/order/'.$templateId.'">
+                        <i class="fa fa-sort-amount-desc" ></i>
+                    </a>
                 <div class="box box-primary">
               </div>'.$ElementAndContent.'</div>';
 
