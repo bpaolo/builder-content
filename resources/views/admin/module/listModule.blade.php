@@ -38,7 +38,7 @@
                           <input name="moduleName" type="text" class="form-control" id="moduleName" value="{{ !empty($result->moduleName) ? $result->moduleName : '' }}" {{ !empty($result->moduleName) ? 'disabled' : '' }}>
                         </div>
                         <div class="form-group">
-                          <label for="name">Selecione um Templates</label>
+                          <label for="name">Selecione uma Página</label>
                           @foreach ($result->templates as $temp)
                             <div >
                               <div class="input-group">
