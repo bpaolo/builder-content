@@ -1,0 +1,1 @@
+SELECT * FROM gte_builder.elements;
