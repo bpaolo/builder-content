@@ -107,13 +107,22 @@ class Element extends Model
 	{
 		try {
 			
-			$results = DB::select('select * from Elements where template_id = '.$templateId);
+			$results = DB::select('select * from Elements where template_id = '.$templateId.' order by position asc');
 			return $results;	
 
 		} catch (Exception $e) {
 			
 		}
 
+	}
+
+	public function updateOrderElement($id, $position)
+	{
+		
+		$id = DB::table('elements')
+				->where('id',$id)
+				->update(['position'=>$position]);
+		return $id;
 	}
 	
     

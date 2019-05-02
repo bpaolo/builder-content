@@ -26,7 +26,7 @@ class TemplateController extends Controller
 
     public function download($id){
 
-        dd('testette');
+        
         $result = $this->getTemplateById($id)[0];
         $modelProject   = new Project();
             $modelCourse    = new Course();

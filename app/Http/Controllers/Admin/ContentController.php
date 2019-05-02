@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Content;
 use App\Models\Element;
+use App\Models\Template;
+use App\Models\Module;
+use App\Models\Project;
+use App\Models\Course;
 
 class ContentController extends Controller
 {
@@ -554,20 +558,59 @@ dd($images[1]);*/
 
     }
 
-    public function getOrder(Request $request){
-$result = json_encode([
+    public function getOrder($idTemplate, Request $request){
+
+        $element  = new Element();
+        $content  = new Content();
+        $template  = new Template();
+        $id = $request->idTemplate;
+        $elements = [];
+
+        //$result = $template->getTemplateById($id)[0];
+
+        $getAllElements      = $element->getElementByTemplateId($id); 
+        
+
+        foreach ($getAllElements as $key => $value) {
+            
+            $data[$key]['id'] = $value->id;
+            $data[$key]['title'] = $value->description;
+            //$element[$value->position] = $value->content;
+            array_push($elements, $value->content);
+            $data[$key]['pos'] = $value->position;
+        }
+
+        $result = $data;
+        $result = json_encode($result);
+        $elements = $elements;
+
+
+        return view('admin.content.getOrder', compact('result'))->with('elements', $elements); 
+
+/*$result = json_encode([
     ['id' => 1,'title' => "ronifer", 'pos' => 1],
     ['id' => 2,'title' => "Marcelo", 'pos' => 2]
-]);
+]);*/
 
 
-        return view('admin.content.getOrder', compact('result'));
 
     }
 
     public function saveOrder(Request $request){
 
-        dd($request->all());
+        $variable = json_decode($request->itens);
+        
+
+        $element  = new Element();
+
+        $ele = $element->getElementById($variable[0]->id);
+        
+        foreach ($variable as $key => $value) {
+
+            $element->updateOrderElement($value->id, $value->pos);
+        }
+
+        return redirect('/home/admin/template/edit/'.$ele[0]->template_id);
 
     }
 

@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 
 	Route::post($addresAdmin.'/content/save',  'ContentController@save')->name('content.save');
 
-	Route::get($addresAdmin.'/content/order/{idTemplate}', 'ContentController@getOrder')->name('content.element');	
+	Route::get($addresAdmin.'/content/order/{idTemplate}', 'ContentController@getOrder')->name('content.getOrder');	
 
 	Route::post($addresAdmin.'/content/order/save',  'ContentController@saveOrder')->name('content.order');
 });
