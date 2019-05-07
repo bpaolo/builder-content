@@ -13,8 +13,9 @@
     <div class="content-header">
       <section class="content-header">
         <h1>
+        <i class="fa fa-map-o" style="color: #3c8dbc"></i>
         Curso
-        <small>administrador</small>
+        <small></small>
         </h1>
         <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>{{ $result->projectName }}</a></li>

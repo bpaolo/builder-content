@@ -47,7 +47,7 @@ return [
     |
     */
 
-    'skin' => 'blue-light',
+    'skin' => 'yellow-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -115,7 +115,7 @@ return [
             'text'        => 'Home',
             'url'         => $addresAdmin.'/project/list',
             'icon'        => 'home',
-            'label'       => 4,
+            
             'label_color' => 'success',
         ],
 
@@ -129,27 +129,27 @@ return [
         [
             'text' => 'Projetos',
             'url'  => $addresAdmin.'/project/list',
-            'icon'        => 'play-circle',
+            'icon'        => 'codepen',
             //'can'  => 'manage-blog',
             'submenu' =>[
                         [
-                            'text' => 'cadastrar',
+                            'text' => 'novo',
                             'url'  =>  $addresAdmin.'/project/add',
                             'icon_color' => 'blue',
                         ],
 
                         
                         [
-                            'text' => 'não publicados',
-                            'url'  =>  $addresAdmin.'/project/add',
+                            'text' => 'lista',
+                            'url'  =>  $addresAdmin.'/project/list',
                             'icon_color' => 'blue',
                         ],
 
-                        [
+                        /*[
                             'text' => 'em homologação',
                             'url'  =>  $addresAdmin.'/project/add',
                             'icon_color' => 'blue',
-                        ],
+                        ],*/
             ],    
             
         ],

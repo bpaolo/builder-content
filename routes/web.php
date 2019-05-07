@@ -11,7 +11,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 	Route::get($addresAdmin, 'AdminController@index')->name('admin.home');
 
 	//project
-	Route::get($addresAdmin.'/project/list',  'ProjectController@index')->name('admin.project');
+	Route::get($addresAdmin.'/project/list',  'ProjectController@list')->name('admin.project');
 	Route::get($addresAdmin.'/project/add',  'ProjectController@add')->name('project.add');	
 	Route::post($addresAdmin.'/project/addProject',  'ProjectController@addProject')->name('project.addProject');	
 	Route::get($addresAdmin.'/project/edit/{id}',  'ProjectController@edit')->name('	project.addProject');	

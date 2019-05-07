@@ -26,6 +26,13 @@ class ProjectController extends Controller
     	return view('admin.project.add', compact('result'));
     }
 
+    public function list(){
+        $p  = new Project(); 
+        $result = $p->getAll();
+        //dd($result);
+        return view('admin.project.list', compact('result'));
+    }
+
     public function addProject(Request $request, Project $project){
     	
         try {

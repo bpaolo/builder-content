@@ -35,6 +35,7 @@
 
 <body class="hold-transition skin-blue-light sidebar-mini ">
 <header class="main-header">
+  
                         <!-- Logo -->
             <a href="http://localhost/gte-builder/public/home" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
