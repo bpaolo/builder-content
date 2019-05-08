@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContentTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateContentTable extends Migration
      */
     public function up()
     {
-        Schema::create('content', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('template_id');
-            $table->integer('element_id');
-            $table->longText('template');
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
-
-
 
     /**
      * Reverse the migrations.
@@ -32,6 +31,6 @@ class CreateContentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('content');
+        Schema::dropIfExists('users');
     }
 }

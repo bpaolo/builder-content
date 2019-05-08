@@ -269,18 +269,21 @@ class ContentController extends Controller
     $result['content'] = null;
     $result['cantent'] = $content;
     $contentLean = $this->BreakPart($content,$element);
-    
+    $title = str_replace('<br />','', $contentLean['content'][0][0]);
+    $content = $contentLean['content'][0][1];
 
     $result['content'] .= '
-        <aside role="complementary" class="panel box-'.$contentLean['content'][0][0].'">
+        <aside role="complementary" class="panel box-'.$title.'">
             <div class="panel-heading">
                 <i class="icon"></i>
-                <div>Dica</div>
+                <div>'.$title.'</div>
             </div>
             <div class="panel-body">
-            <p>'.$contentLean['content'][0][1].'</p>
+            <p>'.$content.'</p>
             </div>
         </aside>';
+
+       
         return $result;
     }
 

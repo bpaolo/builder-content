@@ -26,6 +26,7 @@ class Template extends Model
 			
 			$results = DB::select('select * from templates where maquineta_id = '.$maquinetaId.' AND status = 0');
 			return $results;	
+			
 
 		} catch (Exception $e) {
 			

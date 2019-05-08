@@ -23,9 +23,9 @@ class CreateElementsTable extends Migration
             $table->longText('element');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-            $table->longText('cantent');
-            $table->longText('content');
-            $table->integer('position');
+            $table->longText('cantent')->nullable();
+            $table->longText('content')->nullable();
+            $table->integer('position')->nullable();
              
         });
     }

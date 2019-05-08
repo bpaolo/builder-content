@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Maquineta;
 
 class MaquinetaTableSeeder extends Seeder
 {
@@ -16,3 +17,5 @@ class MaquinetaTableSeeder extends Seeder
 				        ]);
     }
 }
+
+

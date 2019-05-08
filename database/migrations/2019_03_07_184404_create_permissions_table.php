@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMaquinetaTable extends Migration
+class CreatePermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateMaquinetaTable extends Migration
      */
     public function up()
     {
-        Schema::create('maquinetas', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name', 250);
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 50);
+            $table->string('label', 200);
+            $table->timestamps();
         });
+        
     }
-
 
     /**
      * Reverse the migrations.
@@ -29,6 +29,6 @@ class CreateMaquinetaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maquinetas');
+        Schema::dropIfExists('permissions');
     }
 }

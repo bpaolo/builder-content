@@ -14,14 +14,14 @@ class CreateProject extends Migration
     public function up()
     {
         
-        Schema::create('project', function (Blueprint $table) {
+        Schema::create('projects', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 50);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });
      
-
+    }    
     /**
      * Reverse the migrations.
      *
@@ -29,6 +29,6 @@ class CreateProject extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project');
+        Schema::dropIfExists('projects');
     }
 }

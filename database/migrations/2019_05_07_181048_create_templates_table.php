@@ -20,7 +20,7 @@ class CreateTemplatesTable extends Migration
             $table->integer('position')->default(0);
             $table->string('name', 250);
             $table->longText('template');
-            $table->string('status', 250);
+            $table->string('status', 250)->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->integer('tipo_template')->default(0);

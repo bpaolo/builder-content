@@ -11,8 +11,7 @@ class Course extends Model
 	{
 		try {
 			
-			$results = DB::select("SELECT * FROM gte_builder.courses where id = ".$Id);
-
+			$results = DB::select("SELECT * FROM courses where id = ".$Id);
 			return $results;	
 		
 		} catch (Exception $e) {

@@ -11,7 +11,7 @@ class Maquineta extends Model
 	{
 		try {
 			
-			$results = DB::select("SELECT * FROM gte_builder.maquineta where id = ".$Id);
+			$results = DB::select("SELECT * FROM maquinetas where id = ".$Id);
 
 			return $results;	
 		
@@ -25,7 +25,7 @@ class Maquineta extends Model
 	{
 		try {
 			
-			$results = DB::select('select * from maquineta');
+			$results = DB::select('select * from maquinetas');
 			return $results;	
 		
 		} catch (Exception $e) {

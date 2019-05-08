@@ -30,6 +30,9 @@ obs:
 php artisan make:migration create_users_table --create=users
 
 
+//Rodar migrates
+php artisan migrate
+
 //Criando uma Seeder:
 
  php artisan make:seeder UsersTableSeeder
@@ -46,3 +49,10 @@ public function run()
 
 //rodar seeds
 php artisan db:seed
+
+//rodar seeds específica
+php artisan db:seed --class=UsersTableSeeder
+
+
+//caso não ache
+composer dump-autoload

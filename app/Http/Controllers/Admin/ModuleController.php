@@ -159,11 +159,11 @@ class ModuleController extends Controller
 
 
             $result['course']       = $course->getCourseById($request->id);
+
+
             $result['project']      = $project->getProjectById($result['course'][0]->project_id);
             $result['maquineta']    = $maquineta->getMaquinetaById($result['course'][0]->maquineta_id);
             $result['template']     = $template->getTemplateByMaquinetaId($result['course'][0]->maquineta_id);
-
-            //dd($result['template'][0]->id);
 
             $resultElement          = $element->getElementByTemplateId($result['template'][0]->id); 
             $contents = $content->getAllContentBytemplateId($result['template'][0]->id);
